@@ -11,4 +11,15 @@ class Colectivo{
     public function getLinea(){
         return $this->linea;
     }
+
+    public function pagarCon(Tarjeta $tarjeta){
+        if ($tarjeta->saldo < 120){
+            echo "No te queda suficiente saldo, prueba a cargar la tarjeta";
+        }
+        else{
+            $tarjeta->bajarsaldo(120);
+            $boleto = new Boleto($tarjeta->saldo, $this->linea);
+            $boleto->muestra_boleto();
+        }
+    }
 }
