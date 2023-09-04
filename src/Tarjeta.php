@@ -25,4 +25,8 @@ class Tarjeta{
             }
         }
     }
+
+    public function bajarsaldo($precio){
+        $this->saldo =- $precio;
+    }
 }
