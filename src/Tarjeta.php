@@ -2,9 +2,11 @@
 namespace TrabajoSube;
 class Tarjeta{
     protected $saldo;
+    protected $costoBoleto;
 
     public function __construct($saldo){
         $this->saldo = $saldo;
+        $this->costoBoleto = 120;
     }
 
     public function getSaldo(){
@@ -26,7 +28,7 @@ class Tarjeta{
         }
     }
 
-    public function bajarsaldo($precio){
-        $this->saldo =- $precio;
+    public function bajarsaldo(){
+        $this->saldo -= $this->costoBoleto;
     }
 }
