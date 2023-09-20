@@ -13,13 +13,18 @@ class Colectivo{
     }
 
     public function pagarCon($tarjeta){
-        if ($tarjeta->saldo < $tarjeta->costoBoleto){
-            echo "No te queda suficiente saldo, prueba a cargar la tarjeta";
-        }
-        else{
+        if ($tarjeta->saldo - $tarjeta->costoBoleto >= 0 || $tarjeta->puedeusarviajeplus){
             $tarjeta->bajarsaldo();
             $boleto = new Boleto($tarjeta->saldo, $this->linea);
             $boleto->muestra_boleto();
+            if ($tarjeta->saldo < 0) {
+                $tarjeta->viajesplus++;
+            }
+            return true;
+        }
+        else{
+            echo "Saldo insuficiente y no le quedan oportunidades de viaje plus, por favor recargue su tarjeta";
+            return false;
         }
     }
 }

@@ -3,9 +3,11 @@ namespace TrabajoSube;
 class Tarjeta{
     protected $saldo;
     protected $costoBoleto;
+    public $viajesplus;
 
     public function __construct($saldo){
         $this->saldo = $saldo;
+        $this->viajesplus = 0;
         $this->costoBoleto = 120;
     }
 
@@ -21,6 +23,9 @@ class Tarjeta{
         else{
             if (in_array($cargar, $cantidades, true)) {
                 $this->saldo += $cargar;
+                if ($this->saldo > 0) {
+                    $this->viajesplus = 0;
+                }
             }
             else{
                 echo "<br> Por favor elija una cantidad apropiada para cargar";
@@ -30,5 +35,9 @@ class Tarjeta{
 
     public function bajarsaldo(){
         $this->saldo -= $this->costoBoleto;
+    }
+
+    public function puedeusarviajeplus(){
+        return ($this->saldo - $this->costoBoleto >= -211.84) && ($this->viajesplus < 2);
     }
 }
