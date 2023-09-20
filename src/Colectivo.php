@@ -13,13 +13,11 @@ class Colectivo{
     }
 
     public function pagarCon($tarjeta){
-        if ($tarjeta->saldo - $tarjeta->costoBoleto >= 0 || $tarjeta->puedeusarviajeplus){
+        $abono = $tarjeta->saldoExtra;
+        if ($tarjeta->saldo - $tarjeta->costoBoleto >= -211.84){
             $tarjeta->bajarsaldo();
-            $boleto = new Boleto($tarjeta->saldo, $this->linea);
+            $boleto = new Boleto($tarjeta->saldo, $this->linea, $tarjeta->tipo, $tarjeta->ID, ($abono - $tarjeta->saldoExtra));
             $boleto->muestra_boleto();
-            if ($tarjeta->saldo < 0) {
-                $tarjeta->viajesplus++;
-            }
             return true;
         }
         else{
