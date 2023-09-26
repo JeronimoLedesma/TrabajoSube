@@ -12,10 +12,15 @@ class Colectivo{
         return $this->linea;
     }
 
-    public function pagarCon($tarjeta){
+    public function pagarCon($tarjeta, TiempoFake $hora){
         $abono = $tarjeta->saldoExtra;
         if ($tarjeta->saldo - $tarjeta->costoBoleto >= -211.84){
-            $tarjeta->bajarsaldo();
+            if ($tarjeta->tipo == "regular") {
+                $tarjeta->bajarsaldo();
+            }
+            else {
+                $tarjeta->bajarsaldo($hora->tiempo);
+            }
             $boleto = new Boleto($tarjeta->saldo, $this->linea, $tarjeta->tipo, $tarjeta->ID, ($abono - $tarjeta->saldoExtra));
             $boleto->muestra_boleto();
             return true;
