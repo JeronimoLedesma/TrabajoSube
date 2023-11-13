@@ -23,19 +23,11 @@ class FranquiciaParcial extends Tarjeta{
                 $this->saldo -= $this->costoBoleto;
                 $this->momentoDePago = $tiempo;
                 $this->viajeshoy += 1;
-                if ($this->saldo < 6600) {
-                    $abono = 6600 - $this->saldo;
-                    $this->transferirDesdeSaldoExtra($abono);
-                }
             }
             else {
                 $this->saldo -= 120;
                 $this->momentoDePago = $tiempo;
                 $this->viajeshoy += 1;
-                if ($this->saldo < 6600) {
-                    $abono = 6600 - $this->saldo;
-                    $this->transferirDesdeSaldoExtra($abono);
-                }
             }
         }
         else {
