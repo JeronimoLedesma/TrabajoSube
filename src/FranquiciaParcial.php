@@ -5,9 +5,10 @@ use TrabajoSube\Tarjeta;
 class FranquiciaParcial extends Tarjeta{
     
     public $costoBoleto;
-
+    public $saldo;
+    
     public function __contruct($saldo){
-        parent::__construct($saldo);
+        $this->saldo = $saldo;
         $this->costoBoleto = 60;
     }
 }
