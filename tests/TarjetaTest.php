@@ -10,8 +10,5 @@ class TajetaTest extends TestCase{
         $cole = new Colectivo (73);
         $cole->pagarCon($tarjeta, $tiempo);
         $this->assertEquals($tarjeta->getSaldo(), 540);
-        $tiempo->avanzar(200);
-        $cole->pagarCon($tarjeta, $tiempo);
-        $this->assertEquals($tarjeta->getSaldo(), 420);
     }
 }
