@@ -10,6 +10,6 @@ class ParcialTest extends TestCase{
         $tarjeta = new FranquiciaParcial(500);
         $cole = new Colectivo(103);
         $cole->pagarCon($tarjeta);
-        $this->assertEqual($tarjeta->getSaldo(), 440);
+        $this->assertEquals($tarjeta->getSaldo(), 440);
     }
 }
