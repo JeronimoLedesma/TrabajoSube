@@ -8,7 +8,7 @@ class TajetaTest extends TestCase{
         $tarjeta = new FranquiciaParcial (120);
         $cole = new Colectivo (73);
         $tiempo = new TiempoFake();
-        $cole->pagarCon($tarjeta. $tiempo);
+        $cole->pagarCon($tarjeta, $tiempo);
         $this->assertEquals($tarjeta->getSaldo(), 60);
     }
 }
