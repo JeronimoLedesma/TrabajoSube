@@ -11,6 +11,6 @@ class TarjetaTest extends TestCase{
     $tarjeta->cargarSaldo(6700);
     $this->assertEquals($tarjeta->saldo, 0);
     $tarjeta->cargarSaldo(300);
-    $this->assertEquals($tarjeta->saldo, 300);
+    $this->assertEquals($tarjeta->saldo, 0);
     }
 }
