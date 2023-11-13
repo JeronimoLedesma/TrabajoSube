@@ -19,7 +19,7 @@ protected $linea;
             return false;
         }
         else{
-            $tarjeta->reducirSaldo($cantidad);
+            $tarjeta->reducirSaldo($tarjeta->costoBoleto);
             return $tarjeta->saldo;
         }
     }

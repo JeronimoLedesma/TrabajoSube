@@ -10,4 +10,10 @@ class ColectivoTest extends TestCase{
         $cole = new Colectivo(103);
         $this->assertEquals($cole->getLinea(), 103);
     }
+
+    public function testPagar(){
+        $cole = new Colectivo(103);
+        $tarjeta = new Tarjeta(0);
+        $this->assertEquals($cole->pagarCon($tarjeta), false);
+    }
 }
