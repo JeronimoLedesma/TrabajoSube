@@ -6,6 +6,6 @@ class FranquiciaParcial extends Tarjeta{
 
     public function __contruct($saldo){
         $this->saldo = $saldo;
-        $this->costoBoleto = 60;
+        $this->costoBoleto = 180;
     }
 }
