@@ -28,4 +28,10 @@ class Tarjeta{
             return false;
         }
     }
+
+    public function reducirSaldo($cantidad){
+        $this->saldo = $this->saldo - $cantidad;
+        return $this->saldo;
+    }
+    
 }
