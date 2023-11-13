@@ -8,6 +8,7 @@ class TarjetaTest extends TestCase{
     
     public function testCarga(){
     $tarjeta = new Tarjeta(0);
-    $this->assertEquals($tarjera->cargarSaldo(6700), false);
+    $tarjeta->cargarSaldo(6700);
+    $this->assertEquals($tarjeta->saldo, 0);
     }
 }
