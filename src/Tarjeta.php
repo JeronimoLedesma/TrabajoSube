@@ -30,7 +30,7 @@ class Tarjeta{
     }
 
     public function reducirSaldo($cantidad){
-        if ($this->saldo - $cantidad >=-211.84) {
+        if ($this->saldo - $cantidad >=0) {
             $this->saldo = $this->saldo - $cantidad;
             return true;
         }
