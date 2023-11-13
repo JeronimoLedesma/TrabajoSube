@@ -1,1 +1,1 @@
-{"version":1,"defects":{"TrabajoSube\\ColectivoTest::testGetlinea":8,"TrabajoSube\\ParcialTest::testParcial":7},"times":{"TrabajoSube\\ColectivoTest::testGetlinea":0.079,"TrabajoSube\\ParcialTest::testParcial":0.023,"TrabajoSube\\TarjetaTest::testCarga":0.016}}
+{"version":1,"defects":{"TrabajoSube\\ColectivoTest::testGetlinea":8,"TrabajoSube\\ParcialTest::testParcial":7},"times":{"TrabajoSube\\ColectivoTest::testGetlinea":0.079,"TrabajoSube\\ParcialTest::testParcial":0.023,"TrabajoSube\\TarjetaTest::testCarga":0.016,"TrabajoSube\\ColectivoTest::testRecargaSobrante":0.005}}

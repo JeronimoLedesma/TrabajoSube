@@ -25,4 +25,18 @@ class ColectivoTest extends TestCase{
         $this->assertEquals($tarjeta->getSaldo(), 40);
         $this->assertEquals($tarjeta->viajePlus, 0);
     }
+
+    public function testRecargaSobrante(){
+        $cole = new Colectivo(103);
+        $tarjeta = new Tarjeta(6600);
+        $tarjeta->cargarSaldo(220);
+        $this->assertEquals($tarjeta->getSaldo(), 6600);
+        $this->assertEquals($tarjeta->saldoSobrante,220);
+        $cole->pagarCon($tarjeta);
+        $this->assertEquals($tarjeta->saldoSobrante,100);
+        $this->assertEquals($tarjeta->getSaldo(), 6600);
+        $cole->pagarCon($tarjeta);
+        $this->assertEquals($tarjeta->saldoSobrante, 0);
+        $this->assertEquals($tarjeta->getSaldo(), 6580);
+    }
 }
