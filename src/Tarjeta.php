@@ -20,7 +20,7 @@ class Tarjeta{
             return false;
         }
         else if (in_array($cantidad, $recargasPermitidas, true)){
-            $this->saldo = $this->saldo + $cargar;
+            $this->saldo = $this->saldo + $cantidad;
             return $this->saldo;
         }
         else {
