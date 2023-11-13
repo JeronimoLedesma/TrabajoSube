@@ -21,7 +21,7 @@ class Tarjeta{
         }
         else if (in_array($cantidad, $recargasPermitidas, true)){
             $this->saldo = $this->saldo + $cantidad;
-            return $this->saldo;
+            return true;
         }
         else {
             echo "\nLa cantidad que se intenta cargar no se encuentra entre las permitidas";
@@ -30,8 +30,13 @@ class Tarjeta{
     }
 
     public function reducirSaldo($cantidad){
-        $this->saldo = $this->saldo - $cantidad;
-        return $this->saldo;
+        if ($this->saldo - $cantidad >=-211.84) {
+            $this->saldo = $this->saldo - $cantidad;
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     
 }

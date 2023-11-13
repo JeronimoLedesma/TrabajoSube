@@ -6,10 +6,11 @@ use PHPUnit\Framework\TestCase;
 
 class BoletoTest extends TestCase{
 
-    public function mostrarBoletoTest(){
-        $tarjeta = new Tarjeta(500);
+    public function boletoTest(){
         $cole = new Colectivo(103);
-        $cole->pagarCon($tarjeta);
-        $boleto = new Boleto ($tarjeta->saldo, $cole->linea);
+        $tarjeta = new Tarjeta(300);
+        $boleto = $cole->pagarCon($tarjeta);
+        $this->assertEquals($boleto->saldo_viaje, $tarjeta->saldo);
+        $this->assertEquals($boleto->linea_viaje, $cole->linea);
     }
 }

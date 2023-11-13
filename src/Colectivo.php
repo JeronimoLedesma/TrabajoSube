@@ -14,13 +14,13 @@ protected $linea;
     }
 
     public function pagarCon($tarjeta){
-        if ($tarjeta->saldo - $tarjeta->costoBoleto < 0) {
-            echo "\nSaldo insuficiente, por favor recarge la tarjeta";
-            return false;
+        if ($tarjeta->reducirSaldo($tarjeta->costoBoleto)){
+            $boleto = new Boleto($tarjeta->saldo, $this->linea);
+            return $boleto;
         }
-        else{
-            $tarjeta->reducirSaldo($tarjeta->costoBoleto);
-            return $tarjeta->saldo;
+        else {
+            echo "\nSaldo insuficiente";
+            return false;
         }
     }
 
