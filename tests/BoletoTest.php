@@ -10,7 +10,7 @@ class BoletoTest extends TestCase{
         $cole = new Colectivo(103);
         $tarjeta = new Tarjeta(300);
         $boleto = $cole->pagarCon($tarjeta);
-        $this->assertEquals($boleto->saldo_viaje, $tarjeta->saldo);
-        $this->assertEquals($boleto->linea_viaje, $cole->linea);
+        $this->assertEquals($boleto->getSaldoBoleto(), $tarjeta->saldo);
+        $this->assertEquals($boleto->getLineaBoleto(), $cole->linea);
     }
 }
