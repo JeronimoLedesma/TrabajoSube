@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 class ParcialTest extends TestCase{
 
     public function testParcial(){
-        $tarjeta = new FranquiciaParcial(500);
+        $tarjeta = new FranquiciaParcial(500, 46216);
         $cole = new Colectivo(103);
         $cole->pagarCon($tarjeta);
         $this->assertEquals($tarjeta->getSaldo(), 440);

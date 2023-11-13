@@ -4,14 +4,17 @@ class Tarjeta{
     public $saldo;
     public $costoBoleto;
     public $viajePlus;
-
     public $saldoSobrante;
+    public $tarjetaID;
+    public $tipoTarjeta;
 
-    public function __construct($saldo){
+    public function __construct($saldo, $ID){
         $this->saldo = $saldo;
         $this->costoBoleto = 120;
         $this->viajePlus = 0;
         $this->saldoSobrante = 0;
+        $this->tarjetaID = $ID;
+        $this->tipoTarjeta = "Regular";
     }
 
     public function getSaldo(){

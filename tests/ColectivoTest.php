@@ -13,7 +13,7 @@ class ColectivoTest extends TestCase{
 
     public function testPagar(){
         $cole = new Colectivo(103);
-        $tarjeta = new Tarjeta(80);
+        $tarjeta = new Tarjeta(80,46216);
         $cole->pagarCon($tarjeta);
         $this->assertEquals($tarjeta->getSaldo(), -40);
         $this->assertEquals($tarjeta->viajePlus, 1);
@@ -28,7 +28,7 @@ class ColectivoTest extends TestCase{
 
     public function testRecargaSobrante(){
         $cole = new Colectivo(103);
-        $tarjeta = new Tarjeta(6600);
+        $tarjeta = new Tarjeta(6600, 46216);
         $tarjeta->cargarSaldo(220);
         $this->assertEquals($tarjeta->getSaldo(), 6600);
         $this->assertEquals($tarjeta->saldoSobrante,220);

@@ -15,7 +15,7 @@ class Colectivo{
 
     public function pagarCon($tarjeta){
         if ($tarjeta->reducirSaldo($tarjeta->costoBoleto)){
-            $boleto = new Boleto($tarjeta->saldo, $this->linea);
+            $boleto = new Boleto($tarjeta->saldo, $this->linea, $tarjeta->tarjetaID, $tarjeta->tipoTarjeta);
             return $boleto;
         }
         else {
