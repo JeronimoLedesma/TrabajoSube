@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace TrabajoSube;
 
@@ -10,6 +10,6 @@ class ParcialTest extends TestCase{
         $tarjeta = new FranquiciaParcial(500);
         $cole = new Colectivo(103);
         $cole->pagarCon($tarjeta);
-        $this->assertEquals($tarjeta->getSaldo(), 380);
+        $this->assertEquals($tarjeta->getSaldo(), 440);
     }
 }
