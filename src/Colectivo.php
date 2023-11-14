@@ -3,9 +3,11 @@ namespace TrabajoSube;
 class Colectivo{
     
     public $linea;
+    public $costoBoleto;
     
     public function __construct($linea){
         $this->linea = $linea;
+        $this->costoBoleto = 120;
     }
     
     //    Funcion de ejemplo para test
@@ -14,7 +16,7 @@ class Colectivo{
     }
 
     public function pagarCon($tarjeta){
-        if ($tarjeta->reducirSaldo($tarjeta->costoBoleto)){
+        if ($tarjeta->reducirSaldo($this->costoBoleto)){
             $boleto = new Boleto($tarjeta->saldo, $this->linea, $tarjeta->tarjetaID, $tarjeta->tipoTarjeta);
             return $boleto;
         }

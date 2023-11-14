@@ -21,11 +21,11 @@ class CompletaTest extends TestCase{
         $this->assertEquals($tarjeta->reducirSaldo(500), true);
         $this->assertEquals($tarjeta->getSaldo(), 0);
         $this->assertEquals($tarjeta->viajesHoy, 2);
-        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
+        $this->assertEquals($tarjeta->reducirSaldo(120), true);
         $this->assertEquals($tarjeta->getSaldo(), -120);
         $this->assertEquals($tarjeta->reducirSaldo(500), false);
         $tarjeta->ultimoDiaViaje = strtotime("monday");
-        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
+        $this->assertEquals($tarjeta->reducirSaldo(120), true);
         $this->assertEquals($tarjeta->getSaldo(), -120);
     }
 
