@@ -64,5 +64,8 @@ class TarjetaTest extends TestCase
         $tarjeta->usosEnMes = 84;
         $this->assertEquals($tarjeta->reducirSaldo(100), true);
         $this->assertEquals($tarjeta->getSaldo(), 525);
+        $tarjeta->mes = 1;
+        $this->assertEquals($tarjeta->reducirSaldo(100), true);
+        $this->assertEquals($tarjeta->getSaldo(), 425);
     }
 }
