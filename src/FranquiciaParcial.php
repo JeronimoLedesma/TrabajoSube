@@ -17,14 +17,13 @@ class FranquiciaParcial extends Tarjeta{
     }
 
     public function reducirSaldo($cantidad){
+        if(strtotime("today")-$this->diaUltimoViaje != 0){
+            $this->viajesHoy = 0;
+            $this->modificador = 0.5;
+            $this->diaUltimoViaje = strtotime("today");
+        }
 
         if($this->saldo - $cantidad >= -211.84 && $this->viajePlus < 2 && (time()-$this->momentoPago) >= 300){
-            if(strtotime("today")-$this->diaUltimoViaje != 0){
-                $this->viajesHoy = 0;
-                $this->modificador = 0.5;
-                $this->diaUltimoViaje = strtotime("today");
-            }
-            
             if($this->viajesHoy < 4){
                 $this->viajesHoy ++;
             }
