@@ -12,4 +12,22 @@ class CompletaTest extends TestCase{
         $this->assertEquals($tarjeta->reducirSaldo(70000), true);
         $this->assertEquals($tarjeta->getSaldo(), 250);
     }
+
+    public function testUsosCompleta(){
+        $tarjeta = new FranquiciaCompleta(0, 46216);
+        $tarjeta->ultimoDiaViaje = strtotime("sunday");
+        $this->assertEquals($tarjeta->reducirSaldo(500), true);
+        $this->assertEquals($tarjeta->getSaldo(), 0);
+        $this->assertEquals($tarjeta->ultimoDiaViaje, strtotime("today"));
+        $this->assertEquals($tarjeta->viajesHoy, 0);
+        $this->assertEquals($tarjeta->reducirSaldo(500), true);
+        $this->assertEquals($tarjeta->getSaldo(), 0);
+        $this->assertEquals($tarjeta->viajesHoy, 1);
+        $this->assertEquals($tarjeta->reducirSaldo(500), true);
+        $this->assertEquals($tarjeta->getSaldo(), 0);
+        $this->assertEquals($tarjeta->viajesHoy, 2);
+        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
+        $this->assertEquals($tarjeta->getSaldo(), -120);
+        $this->assertEquals($tarjeta->reducirSaldo(500), false);
+    }
 }

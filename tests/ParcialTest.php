@@ -12,4 +12,28 @@ class ParcialTest extends TestCase{
         $cole->pagarCon($tarjeta);
         $this->assertEquals($tarjeta->getSaldo(), 440);
     }
+
+    public function testUsosParcial(){
+        $tarjeta = new FranquiciaCompleta(500, 46216);
+        $this->assertEquals($tarjeta->viajesHoy, 0);
+        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
+        $this->assertEquals($tarjeta->getSaldo(), 440);
+        $this->assertEquals($tarjeta->viajesHoy, 1);
+        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
+        $this->assertEquals($tarjeta->getSaldo(), 380);
+        $this->assertEquals($tarjeta->viajesHoy, 2);
+        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
+        $this->assertEquals($tarjeta->getSaldo(), 320);
+        $this->assertEquals($tarjeta->viajesHoy, 3);
+        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
+        $this->assertEquals($tarjeta->getSaldo(), 260);
+        $this->assertEquals($tarjeta->viajesHoy, 4);
+        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
+        $this->assertEquals($tarjeta->getSaldo(), 140);
+        $tarjeta->ultimoDiaViaje = strtotime("sunday");
+        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
+        $this->assertEquals($tarjeta->getSaldo(), 80);
+        $this->assertEquals($tarjeta->viajesHoy, 0);
+    
+    }
 }
