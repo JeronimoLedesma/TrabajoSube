@@ -7,6 +7,8 @@ class Tarjeta{
     public $saldoSobrante;
     public $tarjetaID;
     public $tipoTarjeta;
+    public $usosEnMes;
+    public $mes;
 
     public function __construct($saldo, $ID){
         $this->saldo = $saldo;
@@ -15,6 +17,8 @@ class Tarjeta{
         $this->saldoSobrante = 0;
         $this->tarjetaID = $ID;
         $this->tipoTarjeta = "Regular";
+        $this->usosEnMes = 0;
+        $this->mes = date("m");
     }
 
     public function getSaldo(){

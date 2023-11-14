@@ -5,14 +5,19 @@ class FranquiciaCompleta extends Tarjeta
 {
     public $ultimoDiaViaje;
     public $viajesHoy;
+    public $hora;
+    public $dia;
     public function __construct($saldo, $ID){
         parent::__construct($saldo, $ID);
         $this->tipoTarjeta = "Boleto Gratuito";
         $this->ultimoDiaViaje = strtotime("today");
         $this->viajesHoy = 0;
+        $this->hora = date("G");
+        $this->dia = date("w");
     }
 
     public function reducirSaldo($cantidad){
+    if($this->dia > 0 && $this->dia < 6 && $this->hora >= 6 && $this->hora <= 22){
         if(strtotime("today")-$this->ultimoDiaViaje != 0){
             $this->viajesHoy = 0;
             $this->ultimoDiaViaje = strtotime("today");
@@ -35,6 +40,10 @@ class FranquiciaCompleta extends Tarjeta
         else {
             return false;
         }
+    }
+    else{
+        return false;
+    }
 
     }
 }
