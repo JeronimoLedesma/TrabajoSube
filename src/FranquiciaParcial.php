@@ -13,7 +13,7 @@ class FranquiciaParcial extends Tarjeta{
         parent::__construct($saldo, $ID);
         $this->tipoTarjeta = "Medio Boleto";
         $this->viajesHoy = 0;
-        $this->diaUltimoViaje = strtotime("today");
+        $this->diaUltimoViaje = date("w");
         $this->momentoPago = time()-300;
         $this->modificador = 0.5;
         $this->hora = date("G");
@@ -22,10 +22,13 @@ class FranquiciaParcial extends Tarjeta{
 
     public function reducirSaldo($cantidad){
     if($this->dia > 0 && $this->dia < 6 && $this->hora >= 6 && $this->hora <= 22){
-        if(strtotime("today")-$this->diaUltimoViaje != 0){
+        if($this->dia != $this->diaUltimoViaje){
             $this->viajesHoy = 0;
             $this->modificador = 0.5;
-            $this->diaUltimoViaje = strtotime("today");
+            $this->diaUltimoViaje = date("w");
+        }
+        else{
+            $this->diaUltimoViaje = date("w");
         }
 
         if($this->saldo - $cantidad >= -211.84 && $this->viajePlus < 2 && (time()-$this->momentoPago) >= 300){

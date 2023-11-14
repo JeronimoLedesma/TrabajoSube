@@ -52,4 +52,17 @@ class TarjetaTest extends TestCase
         $this->assertEquals($tarjeta->saldoSobrante, 0);
         $this->assertEquals($tarjeta->getSaldo(), 6560);
     }
+
+    public function testUsoFrecuente(){
+        $tarjeta = new Tarjeta(800, 46216);
+        $this->assertEquals($tarjeta->reducirSaldo(120), true);
+        $this->assertEquals($tarjeta->getSaldo(), 680);
+        $this->assertEquals($tarjeta->usosEnMes, 1);
+        $tarjeta->usosEnMes = 35;
+        $this->assertEquals($tarjeta->reducirSaldo(100), true);
+        $this->assertEquals($tarjeta->getSaldo(), 600);
+        $tarjeta->usosEnMes = 84;
+        $this->assertEquals($tarjeta->reducirSaldo(100), true);
+        $this->assertEquals($tarjeta->getSaldo(), 525);
+    }
 }

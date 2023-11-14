@@ -9,6 +9,7 @@ class Tarjeta{
     public $tipoTarjeta;
     public $usosEnMes;
     public $mes;
+    public $descuentoUsoFrecuente;
 
     public function __construct($saldo, $ID){
         $this->saldo = $saldo;
@@ -18,7 +19,8 @@ class Tarjeta{
         $this->tarjetaID = $ID;
         $this->tipoTarjeta = "Regular";
         $this->usosEnMes = 0;
-        $this->mes = date("m");
+        $this->mes = date("n");
+        $this->descuentoUsoFrecuente = 1;
     }
 
     public function getSaldo(){
@@ -33,7 +35,7 @@ class Tarjeta{
                 $this->saldo = 6600;
             }
             else{
-            $this->saldo = $this->saldo + $cantidad;
+                $this->saldo = $this->saldo + $cantidad;
             }
             if ($this->saldo > 0) {
                 $this->viajePlus = 0;
@@ -47,8 +49,27 @@ class Tarjeta{
     }
 
     public function reducirSaldo($cantidad){
-        if ($this->saldo - $cantidad >=-211.84 && $this->viajePlus < 2) {
-            $this->saldo = $this->saldo - $cantidad;
+        if ($this->saldo - ($cantidad*$this->descuentoUsoFrecuente) >=-211.84 && $this->viajePlus < 2) {
+            if($this->mes != date("n")){
+                $this->usosEnMes = 0;
+                $this->usosEnMes++;
+            }
+            else{
+                $this->usosEnMes++;
+            }
+
+            if($this->usosEnMes < 29){
+                $this->descuentoUsoFrecuente = 1;
+            }
+            elseif($this->usosEnMes < 79){
+                $this->descuentoUsoFrecuente = 0.8;
+            }
+            else{
+                $this->descuentoUsoFrecuente = 0.75;
+            }
+
+            $this->saldo = $this->saldo - ($cantidad*$this->descuentoUsoFrecuente);
+
             if ($this->saldo < 6600) {
                 $abono = 6600 - $this->saldo;
                 $this->transferirSaldoSobrante($abono);
