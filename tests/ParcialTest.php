@@ -14,7 +14,7 @@ class ParcialTest extends TestCase{
     }
 
     public function testUsosParcial(){
-        $tarjeta = new FranquiciaCompleta(500, 46216);
+        $tarjeta = new FranquiciaParcial(500, 46216);
         $this->assertEquals($tarjeta->viajesHoy, 0);
         $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
         $this->assertEquals($tarjeta->getSaldo(), 440);
