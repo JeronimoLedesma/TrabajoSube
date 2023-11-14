@@ -40,6 +40,8 @@ class ParcialTest extends TestCase{
         $this->assertEquals($tarjeta->viajesHoy, 1);
         $this->assertEquals($tarjeta->getSaldo(), 80);
         $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), false);
+        $tarjeta->momentoPago = time()-300;
+        $this->assertEquals($tarjeta->reducirSaldo(100), true);
     
     }
 }
