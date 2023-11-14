@@ -1,19 +1,22 @@
-<?php 
+<?php
 
 namespace TrabajoSube;
 
 use PHPUnit\Framework\TestCase;
 
-class ColectivoTest extends TestCase{
+class ColectivoTest extends TestCase
+{
 
-    public function testGetlinea(){
+    public function testGetlinea()
+    {
         $cole = new Colectivo(103);
         $this->assertEquals($cole->getLinea(), 103);
     }
 
-    public function testPagar(){
+    public function testPagar()
+    {
         $cole = new Colectivo(103);
-        $tarjeta = new Tarjeta(800,46216);
+        $tarjeta = new Tarjeta(800, 46216);
         $this->assertEquals($tarjeta->getSaldo(), 680);
     }
 }
