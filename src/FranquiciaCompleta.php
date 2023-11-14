@@ -14,7 +14,7 @@ class FranquiciaCompleta extends Tarjeta
     }
 
     public function reducirSaldo($cantidad){
-        if(strtotime("today")-$this->ultimoDiaViaje>0){
+        if(strtotime("today")-$this->ultimoDiaViaje != 0){
             $this->viajesHoy = 0;
             $this->ultimoDiaViaje = strtotime("today");
         }
