@@ -29,7 +29,7 @@ class CompletaTest extends TestCase{
         $this->assertEquals($tarjeta->getSaldo(), -120);
     }
 
-    public function testFinde(){
+    public function testFindeCompleta(){
         $tarjeta = new FranquiciaCompleta(0, 46216);
         $tarjeta->dia = 3;
         $this->assertEquals($tarjeta->reducirSaldo(120), true);
@@ -42,7 +42,7 @@ class CompletaTest extends TestCase{
         $this->assertEquals($tarjeta->viajesHoy, 1);
     }
 
-    public function testDesHora(){
+    public function testDesHoraCompleta(){
         $tarjeta = new FranquiciaCompleta(0, 46216);
         $tarjeta->hora = 15;
         $this->assertEquals($tarjeta->reducirSaldo(120), true);

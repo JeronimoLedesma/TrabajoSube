@@ -21,6 +21,7 @@ class FranquiciaParcial extends Tarjeta{
     }
 
     public function reducirSaldo($cantidad){
+    if($this->dia > 0 && $this->dia < 6 && $this->hora >= 6 && $this->hora <= 22){
         if(strtotime("today")-$this->diaUltimoViaje != 0){
             $this->viajesHoy = 0;
             $this->modificador = 0.5;
@@ -48,5 +49,9 @@ class FranquiciaParcial extends Tarjeta{
         else{
             return false;
         }
+    }
+    else {
+        return false;
+    }
     }
 }

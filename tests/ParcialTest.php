@@ -44,4 +44,30 @@ class ParcialTest extends TestCase{
         $this->assertEquals($tarjeta->reducirSaldo(100), true);
     
     }
+
+    public function testFindeParcial(){
+        $tarjeta = new FranquiciaParcial(60, 46216);
+        $tarjeta->dia = 3;
+        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
+        $this->assertEquals($tarjeta->viajesHoy, 1);
+        $tarjeta->dia = 0;
+        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), false);
+        $this->assertEquals($tarjeta->viajesHoy, 1);
+        $tarjeta->dia = 6;
+        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), false);
+        $this->assertEquals($tarjeta->viajesHoy, 1);
+    }
+
+    public function testDesHoraParcial(){
+        $tarjeta = new FranquiciaParcial(60, 46216);
+        $tarjeta->hora = 8;
+        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
+        $this->assertEquals($tarjeta->viajesHoy, 1);
+        $tarjeta->hora = 3;
+        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), false);
+        $this->assertEquals($tarjeta->viajesHoy, 1);
+        $tarjeta->hora = 23; 
+        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), false);
+        $this->assertEquals($tarjeta->viajesHoy, 1);
+    }
 }
