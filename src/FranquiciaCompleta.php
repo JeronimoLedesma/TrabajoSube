@@ -7,7 +7,6 @@ class FranquiciaCompleta extends Tarjeta
     public $viajesHoy;
     public function __construct($saldo, $ID){
         parent::__construct($saldo, $ID);
-        $this->costoBoleto = 120;
         $this->tipoTarjeta = "Boleto Gratuito";
         $this->ultimoDiaViaje = strtotime("today");
         $this->viajesHoy = 0;
