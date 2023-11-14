@@ -16,7 +16,7 @@ class FranquiciaParcial extends Tarjeta{
     }
 
     public function reducirSaldo($cantidad){
-        if(strtotime("today")-$this->diaUltimoViaje > 0){
+        if(strtotime("today")-$this->diaUltimoViaje != 0){
             $this->viajesHoy = 0;
             $this->costoBoleto = 60;
             $this->diaUltimoViaje = strtotime("today");
