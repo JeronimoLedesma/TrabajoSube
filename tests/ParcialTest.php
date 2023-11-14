@@ -19,7 +19,7 @@ class ParcialTest extends TestCase{
         $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
         $this->assertEquals($tarjeta->getSaldo(), 440);
         $this->assertEquals($tarjeta->viajesHoy, 1);
-        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
+        $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), false);
         $this->assertEquals($tarjeta->getSaldo(), 380);
         $this->assertEquals($tarjeta->viajesHoy, 2);
         $this->assertEquals($tarjeta->reducirSaldo($tarjeta->costoBoleto), true);
