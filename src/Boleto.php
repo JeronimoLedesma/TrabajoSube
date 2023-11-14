@@ -1,10 +1,10 @@
 <?php
 namespace TrabajoSube;
 class Boleto{
-    public $saldo_viaje;
-    public $linea_viaje;
-    public $tarjeta_ID;
-    public $tipoTarjeta;
+    protected $saldo_viaje;
+    protected $linea_viaje;
+    protected $tarjeta_ID;
+    protected $tipoTarjeta;
 
     public function __construct($saldo_viaje, $linea_viaje, $tarjeta_ID, $tipoTarjeta){
         $this->saldo_viaje = $saldo_viaje;
