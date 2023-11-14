@@ -27,12 +27,14 @@ class Tarjeta{
 
     public function cargarSaldo($cantidad){
         $recargasPermitidas = array (150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 2000, 2500, 3000, 3500, 4000);
-        if ($this->saldo + $cantidad > 6600) {
-            $this->saldoSobrante = $this->saldo + $cantidad - 6600;
-            $this->saldo = 6600;
-        }
-        else if (in_array($cantidad, $recargasPermitidas, true)){
+        if (in_array($cantidad, $recargasPermitidas, true)){
+            if ($this->saldo + $cantidad > 6600) {
+                $this->saldoSobrante = $this->saldo + $cantidad - 6600;
+                $this->saldo = 6600;
+            }
+            else{
             $this->saldo = $this->saldo + $cantidad;
+            }
             if ($this->saldo > 0) {
                 $this->viajePlus = 0;
             }

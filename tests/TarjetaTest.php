@@ -9,9 +9,9 @@ class TarjetaTest extends TestCase
 
     public function testCargaSobrante()
     {
-        $tarjeta = new Tarjeta(0, 46216);
-        $this->assertEquals($tarjeta->getSaldo(), 0);
-        $tarjeta->cargarSaldo(6700);
+        $tarjeta = new Tarjeta(3700, 46216);
+        $this->assertEquals($tarjeta->getSaldo(), 3700);
+        $this->assertEquals($tarjeta->cargarSaldo(3000), true);
         $this->assertEquals($tarjeta->getSaldo(), 6600);
         $this->assertEquals($tarjeta->saldoSobrante, 100);
     }
@@ -42,14 +42,14 @@ class TarjetaTest extends TestCase
     {
         $cole = new Colectivo(103);
         $tarjeta = new Tarjeta(6600, 46216);
-        $tarjeta->cargarSaldo(220);
+        $tarjeta->cargarSaldo(200);
         $this->assertEquals($tarjeta->getSaldo(), 6600);
-        $this->assertEquals($tarjeta->saldoSobrante, 220);
+        $this->assertEquals($tarjeta->saldoSobrante, 200);
         $cole->pagarCon($tarjeta);
-        $this->assertEquals($tarjeta->saldoSobrante, 100);
+        $this->assertEquals($tarjeta->saldoSobrante, 80);
         $this->assertEquals($tarjeta->getSaldo(), 6600);
         $cole->pagarCon($tarjeta);
         $this->assertEquals($tarjeta->saldoSobrante, 0);
-        $this->assertEquals($tarjeta->getSaldo(), 6580);
+        $this->assertEquals($tarjeta->getSaldo(), 6560);
     }
 }
