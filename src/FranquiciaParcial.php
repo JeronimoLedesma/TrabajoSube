@@ -28,7 +28,7 @@ class FranquiciaParcial extends Tarjeta{
                 $this->viajesHoy ++;
             }
             else{
-                $this->costoBoleto = 1;
+                $this->modificador = 1;
             }
             $this->saldo -= $cantidad * $this->modificador;
             $this->momentoPago = time();
