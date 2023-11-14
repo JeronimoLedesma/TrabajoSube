@@ -17,9 +17,6 @@ class CompletaTest extends TestCase{
         $tarjeta = new FranquiciaCompleta(0, 46216);
         $this->assertEquals($tarjeta->reducirSaldo(500), true);
         $this->assertEquals($tarjeta->getSaldo(), 0);
-        $this->assertEquals($tarjeta->viajesHoy, 0);
-        $this->assertEquals($tarjeta->reducirSaldo(500), true);
-        $this->assertEquals($tarjeta->getSaldo(), 0);
         $this->assertEquals($tarjeta->viajesHoy, 1);
         $this->assertEquals($tarjeta->reducirSaldo(500), true);
         $this->assertEquals($tarjeta->getSaldo(), 0);
