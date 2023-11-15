@@ -16,7 +16,13 @@ class FranquiciaCompleta extends Tarjeta
         $this->tipoGratuito = $tipoGratuito;
     }
 
-    public function reducirSaldo($cantidad){
+    public function reducirSaldo($cantidad, $colectivo){
+        if ($this->colectivoUsado != get_class($colectivo) && $this->dia != 0 && date("G")-$this->hora < 1 && $this->hora <= 22 && $this->hora >= 7 && $this->colectivoUsado != "Ninguno") {
+            $this->colectivoUsado = get_class($colectivo);
+            $this->hora = date("G");
+            return true;
+        }
+        
     if($this->dia > 0 && $this->dia < 6 && $this->hora >= 6 && $this->hora <= 22){
         if($this->dia != $this->ultimoDiaViaje){
             $this->viajesHoy = 0;
