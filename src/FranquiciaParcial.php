@@ -4,7 +4,6 @@ use TrabajoSube\Tarjeta;
 
 class FranquiciaParcial extends Tarjeta{
     public $momentoPago;
-    public $diaUltimoViaje;
     public $viajesHoy;
     public $modificador;
     public $hora;
@@ -13,7 +12,6 @@ class FranquiciaParcial extends Tarjeta{
         parent::__construct($saldo, $ID);
         $this->tipoTarjeta = "Medio Boleto";
         $this->viajesHoy = 0;
-        $this->diaUltimoViaje = date("w");
         $this->momentoPago = time()-300;
         $this->modificador = 0.5;
         $this->hora = date("G");
@@ -22,13 +20,13 @@ class FranquiciaParcial extends Tarjeta{
 
     public function reducirSaldo($cantidad){
     if($this->dia > 0 && $this->dia < 6 && $this->hora >= 6 && $this->hora <= 22){
-        if($this->dia != $this->diaUltimoViaje){
+        if($this->dia != $this->ultimoDiaViaje){
             $this->viajesHoy = 0;
             $this->modificador = 0.5;
-            $this->diaUltimoViaje = date("w");
+            $this->ultimoDiaViaje = date("w");
         }
         else{
-            $this->diaUltimoViaje = date("w");
+            $this->ultimoDiaViaje = date("w");
         }
 
         if($this->saldo - $cantidad >= -211.84 && $this->viajePlus < 2 && (time()-$this->momentoPago) >= 300){

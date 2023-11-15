@@ -24,7 +24,7 @@ class CompletaTest extends TestCase{
         $this->assertEquals($tarjeta->reducirSaldo(120), true);
         $this->assertEquals($tarjeta->getSaldo(), -120);
         $this->assertEquals($tarjeta->reducirSaldo(500), false);
-        $tarjeta->ultimoDiaViaje = strtotime("monday");
+        $tarjeta->ultimoDiaViaje = 1;
         $this->assertEquals($tarjeta->reducirSaldo(120), true);
         $this->assertEquals($tarjeta->getSaldo(), -120);
     }

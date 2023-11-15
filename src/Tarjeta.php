@@ -9,6 +9,7 @@ class Tarjeta{
     public $usosEnMes;
     public $mes;
     public $descuentoUsoFrecuente;
+    public $ultimoDiaViaje;
 
     public function __construct($saldo, $ID){
         $this->saldo = $saldo;
@@ -19,6 +20,7 @@ class Tarjeta{
         $this->usosEnMes = 0;
         $this->mes = date("n");
         $this->descuentoUsoFrecuente = 1;
+        $this->ultimoDiaViaje = date("w");
     }
 
     public function getSaldo(){

@@ -3,7 +3,6 @@ namespace TrabajoSube;
 use TrabajoSube\Tarjeta;
 class FranquiciaCompleta extends Tarjeta
 {
-    public $ultimoDiaViaje;
     public $viajesHoy;
     public $hora;
     public $dia;
@@ -11,7 +10,6 @@ class FranquiciaCompleta extends Tarjeta
     public function __construct($saldo, $ID, $tipoGratuito){
         parent::__construct($saldo, $ID);
         $this->tipoTarjeta = "Boleto Gratuito";
-        $this->ultimoDiaViaje = date("w");
         $this->viajesHoy = 0;
         $this->hora = date("G");
         $this->dia = date("w");
@@ -22,7 +20,7 @@ class FranquiciaCompleta extends Tarjeta
     if($this->dia > 0 && $this->dia < 6 && $this->hora >= 6 && $this->hora <= 22){
         if($this->dia != $this->ultimoDiaViaje){
             $this->viajesHoy = 0;
-            $this->diaUltimoViaje = date("w");
+            $this->ultimoDiaViaje = date("w");
         }
         if ($this->viajesHoy < 2 || $this->tipoGratuito == "Jubilado") {
             $this->viajesHoy ++;
