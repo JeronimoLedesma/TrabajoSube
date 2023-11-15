@@ -7,14 +7,14 @@ use PHPUnit\Framework\TestCase;
 class CompletaTest extends TestCase{
 
     public function testCompleta(){
-        $tarjeta = new FranquiciaCompleta(250, 46216);
+        $tarjeta = new FranquiciaCompleta(250, 46216, "BEG");
         $cole = new Colectivo(103);
         $this->assertEquals($tarjeta->reducirSaldo(70000), true);
         $this->assertEquals($tarjeta->getSaldo(), 250);
     }
 
     public function testUsosCompleta(){
-        $tarjeta = new FranquiciaCompleta(0, 46216);
+        $tarjeta = new FranquiciaCompleta(0, 46216, "BEG");
         $this->assertEquals($tarjeta->reducirSaldo(500), true);
         $this->assertEquals($tarjeta->getSaldo(), 0);
         $this->assertEquals($tarjeta->viajesHoy, 1);
@@ -30,7 +30,7 @@ class CompletaTest extends TestCase{
     }
 
     public function testFindeCompleta(){
-        $tarjeta = new FranquiciaCompleta(0, 46216);
+        $tarjeta = new FranquiciaCompleta(0, 46216, "BEG");
         $tarjeta->dia = 3;
         $this->assertEquals($tarjeta->reducirSaldo(120), true);
         $this->assertEquals($tarjeta->viajesHoy, 1);
@@ -43,7 +43,7 @@ class CompletaTest extends TestCase{
     }
 
     public function testDesHoraCompleta(){
-        $tarjeta = new FranquiciaCompleta(0, 46216);
+        $tarjeta = new FranquiciaCompleta(0, 46216, "BEG");
         $tarjeta->hora = 15;
         $this->assertEquals($tarjeta->reducirSaldo(120), true);
         $this->assertEquals($tarjeta->viajesHoy, 1);
@@ -53,5 +53,12 @@ class CompletaTest extends TestCase{
         $tarjeta->hora = 23;
         $this->assertEquals($tarjeta->reducirSaldo(120), false);
         $this->assertEquals($tarjeta->viajesHoy, 1);
+    }
+
+    public function testJubilado(){
+        $tarjeta = new FranquiciaCompleta(0, 46216, "Jubilado");
+        $tarjeta->hora = 15;
+        $tarjeta->viajesHoy = 4;
+        $this->assertEquals($tarjeta->reducirSaldo(3000), true);
     }
 }
