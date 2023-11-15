@@ -6,5 +6,6 @@ class ColectivoInterurbano extends Colectivo{
     public function __construct($linea){
         parent::__construct($linea);
         $this->costoBoleto = 184;
+        $this->tipoColectivo = "Interurbano";
     }
 }

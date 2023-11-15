@@ -17,8 +17,8 @@ class FranquiciaCompleta extends Tarjeta
     }
 
     public function reducirSaldo($cantidad, $colectivo){
-        if ($this->colectivoUsado != get_class($colectivo) && $this->dia != 0 && date("G")-$this->hora < 1 && $this->hora <= 22 && $this->hora >= 7 && $this->colectivoUsado != "Ninguno") {
-            $this->colectivoUsado = get_class($colectivo);
+        if ($this->colectivoUsado != $colectivo && $this->dia != 0 && date("G")-$this->hora < 1 && $this->hora <= 22 && $this->hora >= 7 && $this->colectivoUsado != "Ninguno") {
+            $this->colectivoUsado = $colectivo;
             $this->hora = date("G");
             return true;
         }

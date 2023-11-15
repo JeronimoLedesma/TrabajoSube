@@ -4,10 +4,12 @@ class Colectivo{
     
     public $linea;
     public $costoBoleto;
+    public $tipoColectivo;
     
     public function __construct($linea){
         $this->linea = $linea;
         $this->costoBoleto = 120;
+        $this->tipoColectivo = "Comun";
     }
     
     //    Funcion de ejemplo para test
@@ -15,8 +17,8 @@ class Colectivo{
         return $this->linea;
     }
 
-    public function pagarCon($tarjeta, $this){
-        if ($tarjeta->reducirSaldo($this->costoBoleto)){
+    public function pagarCon($tarjeta){
+        if ($tarjeta->reducirSaldo($this->costoBoleto, $this->tipoColectivo)){
             $boleto = new Boleto($tarjeta->saldo, $this->linea, $tarjeta->tarjetaID, $tarjeta->tipoTarjeta);
             return $boleto;
         }
