@@ -46,7 +46,6 @@ class CompletaTest extends TestCase{
 
     public function testDesHoraCompleta(){
         $tarjeta = new FranquiciaCompleta(0, 46216, "BEG");
-        echo("Son las " .$tarjeta->hora);
         $tarjeta->hora = 15;
         $this->assertEquals($tarjeta->reducirSaldo(120, "Comun"), true);
         $this->assertEquals($tarjeta->viajesHoy, 1);
