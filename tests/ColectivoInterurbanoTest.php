@@ -15,6 +15,7 @@ class ColectivoInterurbanoTest extends TestCase{
     public function testInterurbanoParcial(){
         $cole = new ColectivoInterurbano(103);
         $tarjeta = new FranquiciaParcial(800, 46216);
+        $tarjeta->hora = 15;
         $cole->pagarCon($tarjeta);
         $this->assertEquals($tarjeta->getSaldo(), 708);
     }

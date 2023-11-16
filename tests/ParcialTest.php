@@ -8,6 +8,7 @@ class ParcialTest extends TestCase{
 
     public function testParcial(){
         $tarjeta = new FranquiciaParcial(500, 46216);
+        $tarjeta->hora = 15;
         $cole = new Colectivo(103);
         $cole->pagarCon($tarjeta);
         $this->assertEquals($tarjeta->getSaldo(), 440);
@@ -15,6 +16,7 @@ class ParcialTest extends TestCase{
 
     public function testUsosParcial(){
         $tarjeta = new FranquiciaParcial(500, 46216);
+        $tarjeta->hora = 15;
         $this->assertEquals($tarjeta->viajesHoy, 0);
         $this->assertEquals($tarjeta->reducirSaldo(120, "Comun"), true);
         $this->assertEquals($tarjeta->getSaldo(), 440);
@@ -47,6 +49,7 @@ class ParcialTest extends TestCase{
 
     public function testFindeParcial(){
         $tarjeta = new FranquiciaParcial(60, 46216);
+        $tarjeta->hora = 15;
         $tarjeta->dia = 3;
         $this->assertEquals($tarjeta->reducirSaldo(120, "Comun"), true);
         $this->assertEquals($tarjeta->viajesHoy, 1);
@@ -60,6 +63,7 @@ class ParcialTest extends TestCase{
 
     public function testDesHoraParcial(){
         $tarjeta = new FranquiciaParcial(60, 46216);
+        $tarjeta->hora = 15;
         $tarjeta->hora = 8;
         $this->assertEquals($tarjeta->reducirSaldo(120, "Comun"), true);
         $this->assertEquals($tarjeta->viajesHoy, 1);

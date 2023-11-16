@@ -17,7 +17,7 @@ class FranquiciaParcial extends Tarjeta{
 
     public function reducirSaldo($cantidad, $colectivo){
     if($this->dia > 0 && $this->dia < 6 && $this->hora >= 6 && $this->hora <= 22){
-        if ($this->colectivoUsado != $colectivo && $this->dia != 0 && date("G")-$this->hora < 1 && $this->hora <= 22 && $this->hora >= 7 && $this->colectivoUsado != "Ninguno") {
+        if ($this->colectivoUsado != $colectivo && $this->dia != 0 && (date("G")-$this->hora) < 1 && $this->hora <= 22 && $this->hora >= 7 && $this->colectivoUsado != "Ninguno") {
             $this->colectivoUsado = $colectivo;
             $this->hora = date("G");
             return true;
@@ -32,7 +32,7 @@ class FranquiciaParcial extends Tarjeta{
             $this->ultimoDiaViaje = date("w");
         }
 
-        if($this->saldo - $cantidad >= -211.84 && $this->viajePlus < 2 && (time()-$this->momentoPago) >= 300){
+        if($this->saldo - ($cantidad*$this->modificador) >= -211.84 && $this->viajePlus < 2 && (time()-$this->momentoPago) >= 300){
             if($this->viajesHoy < 4){
                 $this->viajesHoy ++;
             }
