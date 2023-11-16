@@ -63,4 +63,17 @@ class CompletaTest extends TestCase{
         $tarjeta->viajesHoy = 4;
         $this->assertEquals($tarjeta->reducirSaldo(3000, "Comun"), true);
     }
+
+    public function testTransbordoCompleta(){
+        $tarjeta = new FranquiciaCompleta(500,46216, "BEG");
+        $tarjeta->hora = 15;
+        $tarjeta->pagadoALas = 14;
+        $tarjeta->dia = 4;
+        $tarjeta->viajesHoy = 4;
+        $this->assertEquals($tarjeta->reducirSaldo(120,"Comun"),true);
+        $this->assertEquals($tarjeta->getSaldo(),380);
+        $tarjeta->pagadoALas = 15;
+        $this->assertEquals($tarjeta->reducirSaldo(120, "Interubano") , true);
+        $this->assertEquals($tarjeta->getSaldo(), 380);
+    }
 }

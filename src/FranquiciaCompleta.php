@@ -17,16 +17,19 @@ class FranquiciaCompleta extends Tarjeta
     }
 
     public function reducirSaldo($cantidad, $colectivo){
+    if($this->dia > 0 && $this->dia < 6 && $this->hora >= 6 && $this->hora <= 22){
+        if($this->dia != $this->ultimoDiaViaje){
+            $this->viajesHoy = 0;
+            $this->ultimoDiaViaje = date("w");
+        }
         if ($this->colectivoUsado != $colectivo && $this->dia != 0 && date("G")-$this->hora < 1 && $this->hora <= 22 && $this->hora >= 7 && $this->colectivoUsado != "Ninguno") {
             $this->colectivoUsado = $colectivo;
             $this->hora = date("G");
             return true;
         }
-        
-    if($this->dia > 0 && $this->dia < 6 && $this->hora >= 6 && $this->hora <= 22){
-        if($this->dia != $this->ultimoDiaViaje){
-            $this->viajesHoy = 0;
-            $this->ultimoDiaViaje = date("w");
+        else {
+            $this->colectivoUsado = $colectivo;
+            $this->pagadoALas = date("G");
         }
         if ($this->viajesHoy < 2 || $this->tipoGratuito == "Jubilado") {
             $this->viajesHoy ++;

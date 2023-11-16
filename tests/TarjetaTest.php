@@ -77,7 +77,6 @@ class TarjetaTest extends TestCase
         $this->assertEquals($tarjeta->reducirSaldo(120,"Comun"),true);
         $this->assertEquals($tarjeta->getSaldo(),380);
         $tarjeta->pagadoALas = 15;
-        echo("La hora es " .$tarjeta->hora." y se pago a las " .$tarjeta->pagadoALas);
         $this->assertEquals($tarjeta->reducirSaldo(120, "Interubano") , true);
         $this->assertEquals($tarjeta->getSaldo(), 380);
     }

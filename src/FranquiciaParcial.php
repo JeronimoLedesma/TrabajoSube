@@ -22,6 +22,10 @@ class FranquiciaParcial extends Tarjeta{
             $this->hora = date("G");
             return true;
         }
+        else {
+            $this->colectivoUsado = $colectivo;
+            $this->pagadoALas = date("G");
+        }
 
         if($this->dia != $this->ultimoDiaViaje){
             $this->viajesHoy = 0;
