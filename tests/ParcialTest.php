@@ -9,8 +9,7 @@ class ParcialTest extends TestCase{
     public function testParcial(){
         $tarjeta = new FranquiciaParcial(500, 46216);
         $tarjeta->hora = 15;
-        $cole = new Colectivo(103);
-        $cole->pagarCon($tarjeta);
+        $this->assertEquals($tarjeta->reducirSaldo(120, "Comun"), true);
         $this->assertEquals($tarjeta->getSaldo(), 440);
     }
 

@@ -17,7 +17,18 @@ class ColectivoTest extends TestCase
     {
         $cole = new Colectivo(103);
         $tarjeta = new Tarjeta(800, 46216);
+        $tarjeta->hora = 15;
+        $tarjeta->dia = 3;
         $cole->pagarCon($tarjeta);
-        $this->assertEquals($tarjeta->getSaldo(), 680);
+        $this->assertEquals($tarjeta->getSaldo(), 615);
     }
+
+    public function testPagarParcial(){
+        $cole = new Colectivo(103);
+        $tarjeta = new FranquiciaParcial(800,46216);
+        $tarjeta->hora = 15;
+        $tarjeta->dia = 3;
+        $cole->pagarCon($tarjeta);
+        $this->assertEquals($tarjeta->getSaldo(),707.5);
+        }
 }

@@ -12,7 +12,7 @@ class Boleto{
         $this->linea_viaje = $linea_viaje;
         $this->tarjeta_ID = $tarjeta_ID;
         $this->tipoTarjeta = $tipoTarjeta;
-        $this->tiempo = date("d/m/Y H:i:s");
+        $this->tiempo = date("d/m/Y H:i");
     }
 
     public function getSaldoBoleto(){

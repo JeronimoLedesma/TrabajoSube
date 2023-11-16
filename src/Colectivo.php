@@ -8,7 +8,7 @@ class Colectivo{
     
     public function __construct($linea){
         $this->linea = $linea;
-        $this->costoBoleto = 120;
+        $this->costoBoleto = 185;
         $this->tipoColectivo = "Comun";
     }
     

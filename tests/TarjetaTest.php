@@ -24,15 +24,14 @@ class TarjetaTest extends TestCase
 
     public function testViajePlus()
     {
-        $cole = new Colectivo(103);
         $tarjeta = new Tarjeta(80, 46216);
-        $cole->pagarCon($tarjeta);
+        $this->assertEquals($tarjeta->reducirSaldo(120, "Comun"), true);
         $this->assertEquals($tarjeta->getSaldo(), -40);
         $this->assertEquals($tarjeta->viajePlus, 1);
-        $cole->pagarCon($tarjeta);
+        $this->assertEquals($tarjeta->reducirSaldo(120, "Comun"), true);
         $this->assertEquals($tarjeta->getSaldo(), -160);
         $this->assertEquals($tarjeta->viajePlus, 2);
-        $this->assertEquals($cole->pagarCon($tarjeta), false);
+        $this->assertEquals($tarjeta->reducirSaldo(120, "Comun"), false);
         $tarjeta->cargarSaldo(200);
         $this->assertEquals($tarjeta->getSaldo(), 40);
         $this->assertEquals($tarjeta->viajePlus, 0);
@@ -45,10 +44,10 @@ class TarjetaTest extends TestCase
         $tarjeta->cargarSaldo(200);
         $this->assertEquals($tarjeta->getSaldo(), 6600);
         $this->assertEquals($tarjeta->saldoSobrante, 200);
-        $cole->pagarCon($tarjeta);
+        $this->assertEquals($tarjeta->reducirSaldo(120, "Comun"), true);
         $this->assertEquals($tarjeta->saldoSobrante, 80);
         $this->assertEquals($tarjeta->getSaldo(), 6600);
-        $cole->pagarCon($tarjeta);
+        $this->assertEquals($tarjeta->reducirSaldo(120, "Comun"), true);
         $this->assertEquals($tarjeta->saldoSobrante, 0);
         $this->assertEquals($tarjeta->getSaldo(), 6560);
     }
