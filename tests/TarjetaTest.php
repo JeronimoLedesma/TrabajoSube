@@ -68,4 +68,17 @@ class TarjetaTest extends TestCase
         $this->assertEquals($tarjeta->reducirSaldo(100, "Comun"), true);
         $this->assertEquals($tarjeta->getSaldo(), 425);
     }
+
+    public function testTransbordoNormal(){
+        $tarjeta = new Tarjeta(500,46216);
+        $tarjeta->hora = 15;
+        $tarjeta->pagadoALas = 14;
+        $tarjeta->dia = 4;
+        $this->assertEquals($tarjeta->reducirSaldo(120,"Comun"),true);
+        $this->assertEquals($tarjeta->getSaldo(),380);
+        $tarjeta->pagadoALas = 15;
+        echo("La hora es " .$tarjeta->hora." y se pago a las " .$tarjeta->pagadoALas);
+        $this->assertEquals($tarjeta->reducirSaldo(120, "Interubano") , true);
+        $this->assertEquals($tarjeta->getSaldo(), 380);
+    }
 }

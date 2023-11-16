@@ -13,6 +13,7 @@ class Tarjeta{
     public $colectivoUsado;
     public $hora;
     public $dia;
+    public $pagadoALas;
 
     public function __construct($saldo, $ID){
         $this->saldo = $saldo;
@@ -25,6 +26,7 @@ class Tarjeta{
         $this->descuentoUsoFrecuente = 1;
         $this->ultimoDiaViaje = date("w");
         $this->colectivoUsado = "Ninguno";
+        $this->pagadoALas = (date("G")-1);
         $this->hora = date("G");
         $this->dia = date("w");
     }
@@ -56,10 +58,15 @@ class Tarjeta{
 
     public function reducirSaldo($cantidad, $colectivo)
     {   
-        if ($this->colectivoUsado != $colectivo && $this->dia != 0 && date("G")-$this->hora < 1 && $this->hora <= 22 && $this->hora >= 7 && $this->colectivoUsado != "Ninguno") {
+        
+        if (($this->colectivoUsado != $colectivo) && ($this->dia != 0) && (($this->hora-$this->pagadoALas) < 1) && ($this->hora <= 22) && ($this->hora >= 7)) {
             $this->colectivoUsado = $colectivo;
-            $this->hora = date("G");
+            $this->pagadoALas = date("G");
             return true;
+        }
+        else {
+            $this->colectivoUsado = $colectivo;
+            $this->pagadoALas = date("G");
         }
         if ($this->saldo - ($cantidad*$this->descuentoUsoFrecuente) >=-211.84 && $this->viajePlus < 2) {
             if($this->mes != date("n")){
